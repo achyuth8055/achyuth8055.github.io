@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      background: #0f0f0f;
+      color: #ffffff;
+    }
+    header, section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .hero h1 {
+      font-size: 3rem;
+    }
+    .hero .emojis {
+      font-size: 2rem;
+      margin-left: 10px;
+    }
+    .hero-buttons {
+      margin-top: 20px;
+    }
+    .hero-buttons button, .hero-buttons a {
+      margin-right: 10px;
+      background: #6a0dad;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .hero-image img {
+      border-radius: 50%;
+      width: 220px;
+      height: 220px;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .stats div {
+      padding: 10px;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Hero() {
+      return (
+        <header className="hero">
+          <div>
+            <h1>Hi there <span className="emojis">👋</span> I'm <span style={{ color: '#c084fc' }}>MERN</span> | |</h1>
+            <p>Passionate coder aspiring to architect software solutions that seamlessly blend functionality and solve problems. Let's build the future together!</p>
+            <div className="hero-buttons">
+              <a href="#" target="_blank">Resume</a>
+              <a href="#">in</a>
+              <a href="#">gh</a>
+            </div>
+          </div>
+          <div className="hero-image">
+            <img src="https://i.ibb.co/2NjbsFg/profile.png" alt="Your Face" />
+          </div>
+        </header>
+      );
+    }
+
+    function Stats() {
+      return (
+        <div className="stats">
+          <div><h3>3+</h3><p>Years of Experience</p></div>
+          <div><h3>25+</h3><p>GitHub Repos</p></div>
+          <div><h3>350+</h3><p>GitHub Contributions</p></div>
+          <div><h3>100+</h3><p>Leetcode Problems</p></div>
+        </div>
+      );
+    }
+
+    function Projects() {
+      return (
+        <section id="projects">
+          <h2>Projects</h2>
+          <p>Project cards and links go here.</p>
+        </section>
+      );
+    }
+
+    function Experience() {
+      return (
+        <section id="experience">
+          <h2>Work Experience</h2>
+          <p>Describe your roles and companies here.</p>
+        </section>
+      );
+    }
+
+    function About() {
+      return (
+        <section id="about">
+          <h2>About Me</h2>
+          <p>Your story, background, and mission statement.</p>
+        </section>
+      );
+    }
+
+    function Contact() {
+      return (
+        <section id="contact">
+          <h2>Connect With Me</h2>
+          <p>Email, social links, and contact form if needed.</p>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Hero />
+          <Stats />
+          <Projects />
+          <Experience />
+          <About />
+          <Contact />
+        </>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
