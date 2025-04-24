@@ -26,13 +26,13 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        gap: 40px;
+        gap: 20px;
       }
       .hero-content {
         flex: 1;
         min-width: 300px;
       }
-      .hero h1 {
+      .hero h3 {
         font-size: 3rem;
         line-height: 1.2;
       }
@@ -280,6 +280,7 @@
       crossorigin
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -577,6 +578,7 @@
           </section>
         );
       }
+
       function About() {
         return (
           <section id="about">
@@ -598,14 +600,79 @@
         );
       }
 
-      function Contact() {
-        return (
-          <section id="contact">
-            <h2>Connect With Me</h2>
-            <p>Email, social links, and contact form if needed.</p>
-          </section>
-        );
-      }
+      function ContactForm() {
+  return (
+    <form onSubmit={(e) => e.preventDefault()} style={{ maxWidth: '500px', width: '100%' }}>
+      <input type="text" placeholder="Your Name" required style={inputStyle} />
+      <input type="email" placeholder="Your Email" required style={inputStyle} />
+      <textarea placeholder="Your Message" rows="5" required style={{ ...inputStyle, resize: 'vertical' }} />
+      <button type="submit" style={buttonStyle}>Send</button>
+    </form>
+  );
+}
+
+function SocialLinks() {
+  return (
+    <div style={{ marginTop: '40px', display: 'flex', gap: '24px', justifyContent: 'center' }}>
+      {/* GitHub */}
+      <a href="https://github.com/achyuth8055" target="_blank" rel="noopener noreferrer" style={iconLink}>
+        <i className="fab fa-github"></i>
+      </a>
+
+      {/* LinkedIn */}
+      <a href="https://linkedin.com/in/achyuth09" target="_blank" rel="noopener noreferrer" style={iconLink}>
+        <i className="fab fa-linkedin"></i>
+      </a>
+
+      {/* Gmail */}
+      <a href="mailto:achyuthkumark2001@gmail.com" style={iconLink}>
+        <i className="fab fa-google"></i>
+      </a>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" style={{ padding: '80px 20px', backgroundColor: '#0f0f0f', color: '#fff' }}>
+      <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Connect With Me</h2>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <ContactForm />
+        <SocialLinks />
+      </div>
+    </section>
+  );
+}
+
+// Shared styles
+const inputStyle = {
+  width: '100%',
+  padding: '12px 16px',
+  margin: '10px 0',
+  border: '1px solid #333',
+  borderRadius: '8px',
+  backgroundColor: '#1a1a1a',
+  color: '#fff',
+  fontSize: '16px'
+};
+
+const buttonStyle = {
+  backgroundColor: '#6a0dad',
+  color: '#fff',
+  padding: '12px 20px',
+  border: 'none',
+  borderRadius: '8px',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  width: '100%',
+  marginTop: '10px'
+};
+
+const iconLink = {
+  color: '#fff',
+  transition: 'transform 0.2s ease',
+  textDecoration: 'none'
+};
 
       function App() {
         return (
