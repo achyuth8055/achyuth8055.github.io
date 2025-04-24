@@ -72,6 +72,7 @@
 
   <script type="text/babel">
     function Hero() {
+        const PROFILE_PICTURE = "https://github.com/achyuth8055/achyuth8055.github.io/blob/main/tom.jpg"
       return (
         <header className="hero">
           <div>
@@ -84,7 +85,7 @@
             </div>
           </div>
           <div className="hero-image">
-            <img src="https://i.ibb.co/2NjbsFg/profile.png" alt="Your Face" />
+            <img src={PROFILE_PICTURE} alt="Your Face" />
           </div>
         </header>
       );
