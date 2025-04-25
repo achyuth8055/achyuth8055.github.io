@@ -280,7 +280,10 @@
       crossorigin
     ></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <div id="root"></div>
@@ -323,13 +326,15 @@
         }, [currentText, isDeleting, loopNum, typingSpeed]);
 
         return (
-          <h1>
+          <h4>
             {text}
             <span className="typewriter-text">{currentText}</span>
             <span className="cursor"></span>
-          </h1>
+          </h4>
         );
       }
+
+     
 
       function Hero() {
         const PROFILE_PICTURE =
@@ -347,10 +352,10 @@
                 <a href="#" target="_blank">
                   Resume
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.linkedin.com/in/achyuth09" target="_blank">
                   LinkedIn
                 </a>
-                <a href="#" target="_blank">
+                <a href="https://www.github.com/achyuth8055" target="_blank">
                   GitHub
                 </a>
               </div>
@@ -362,55 +367,64 @@
         );
       }
 
+      function StartsDiv({data, text}){
+        return(<>
+            <div>
+              <h3>{data}</h3>
+              <p>{text}</p>
+            </div>
+        </>)
+      }
+
       function Stats() {
         return (
           <div className="stats">
-            <div>
-              <h3>2+</h3>
-              <p>Years of Experience</p>
-            </div>
-            <div>
-              <h3>10+</h3>
-              <p>GitHub Repos</p>
-            </div>
-            <div>
-              <h3>5+</h3>
-              <p>Projects Completed</p>
-            </div>
+            <StartsDiv data="2" text="Years Of Experience"/>
+            <StartsDiv data="10+" text="GitHub Repos"/>
+            <StartsDiv data="5+" text="Projects Completed"/>
           </div>
         );
       }
 
       function Projects() {
         const projects = [
-          {
-            title: "E-Commerce Platform",
-            description:
-              "Full-featured online store with cart, payments, and admin dashboard built with MERN stack.",
-            technologies: ["React", "Node.js", "MongoDB", "Stripe API"],
-            githubLink: "#",
-            liveDemo: "#",
-            image: "https://via.placeholder.com/400x250?text=E-Commerce",
-          },
-          {
-            title: "Task Management App",
-            description:
-              "Productivity application for team collaboration with real-time updates and task tracking.",
-            technologies: ["React", "Firebase", "Material UI"],
-            githubLink: "#",
-            liveDemo: "#",
-            image: "https://via.placeholder.com/400x250?text=Task+App",
-          },
-          {
-            title: "Portfolio Website",
-            description:
-              "Responsive personal portfolio showcasing my projects and skills.",
-            technologies: ["React", "GSAP", "CSS3"],
-            githubLink: "#",
-            liveDemo: "#",
-            image: "https://via.placeholder.com/400x250?text=Portfolio",
-          },
-        ];
+  {
+    title: "Secure Chat Application",
+    description:
+      "Real-time chat app with end-to-end AES encryption, typing indicators, and JWT-based authentication.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Socket.io",
+      "MongoDB",
+      "JWT",
+      "CSRF",
+      "AES-256",
+    ],
+    githubLink: "https://github.com/your-chat-app-repo", // Replace with actual GitHub link
+    liveDemo: "#", // Add if available
+    image: "https://cdn-icons-gif.flaticon.com/8121/8121267.gif",
+  },
+  {
+    title: "OLX Marketplace Clone",
+    description:
+      "A full-stack OLX clone with advanced filtering, MongoDB integration, and user-friendly UI.",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Bootstrap"],
+    githubLink: "https://github.com/achyuth8055", // Replace with actual GitHub link
+    liveDemo: "#", 
+    image: "https://media.lordicon.com/icons/wired/lineal/1359-online-shopping.gif",
+  },
+  {
+    title: "Content Management System",
+    description:
+      "A dynamic CMS platform supporting content creation, editing, and user authentication.",
+    technologies: ["React", "Node.js", "MongoDB"],
+    githubLink: "https://github.com/achyuth8055", // Replace with actual GitHub link
+    liveDemo: "#", 
+    image: "https://cdn-images-1.medium.com/max/800/1*LGNLwf-3dknhu1mMalKDJQ.gif",
+  },
+];
+
 
         const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -425,7 +439,8 @@
             prevIndex === 0 ? projects.length - 1 : prevIndex - 1
           );
         };
-        const IMAGE_LOGO = "https://img.favpng.com/0/20/2/project-icon-business-management-icon-project-management-icon-png-favpng-05qyCDKe21ZX6CfmJZGaDXzN7.jpg"
+        const IMAGE_LOGO =
+          "https://img.favpng.com/0/20/2/project-icon-business-management-icon-project-management-icon-png-favpng-05qyCDKe21ZX6CfmJZGaDXzN7.jpg";
         return (
           <section id="projects" className="projects-section">
             <h2>My Projects</h2>
@@ -436,10 +451,7 @@
 
               <div className="project-card">
                 <div className="project-image">
-                  <img
-                    src={IMAGE_LOGO}
-                    alt={projects[currentIndex].title}
-                  />
+                  <img src={projects[currentIndex].image} alt={projects[currentIndex].title} />
                 </div>
                 <div className="project-content">
                   <h3>{projects[currentIndex].title}</h3>
@@ -601,78 +613,130 @@
       }
 
       function ContactForm() {
-  return (
-    <form onSubmit={(e) => e.preventDefault()} style={{ maxWidth: '500px', width: '100%' }}>
-      <input type="text" placeholder="Your Name" required style={inputStyle} />
-      <input type="email" placeholder="Your Email" required style={inputStyle} />
-      <textarea placeholder="Your Message" rows="5" required style={{ ...inputStyle, resize: 'vertical' }} />
-      <button type="submit" style={buttonStyle}>Send</button>
-    </form>
-  );
-}
+        return (
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            style={{ maxWidth: "500px", width: "100%" }}
+          >
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              style={inputStyle}
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              style={inputStyle}
+            />
+            <textarea
+              placeholder="Your Message"
+              rows="5"
+              required
+              style={{ ...inputStyle, resize: "vertical" }}
+            />
+            <button type="submit" style={buttonStyle}>
+              Send
+            </button>
+          </form>
+        );
+      }
 
-function SocialLinks() {
-  return (
-    <div style={{ marginTop: '40px', display: 'flex', gap: '24px', justifyContent: 'center' }}>
-      {/* GitHub */}
-      <a href="https://github.com/achyuth8055" target="_blank" rel="noopener noreferrer" style={iconLink}>
-        <i className="fab fa-github"></i>
-      </a>
+      function SocialLinks() {
+        return (
+          <div
+            style={{
+              marginTop: "40px",
+              display: "flex",
+              gap: "24px",
+              justifyContent: "center",
+            }}
+          >
+            {/* GitHub */}
+            <a
+              href="https://github.com/achyuth8055"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={iconLink}
+            >
+              <i className="fab fa-github"></i>
+            </a>
 
-      {/* LinkedIn */}
-      <a href="https://linkedin.com/in/achyuth09" target="_blank" rel="noopener noreferrer" style={iconLink}>
-        <i className="fab fa-linkedin"></i>
-      </a>
+            {/* LinkedIn */}
+            <a
+              href="https://linkedin.com/in/achyuth09"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={iconLink}
+            >
+              <i className="fab fa-linkedin"></i>
+            </a>
 
-      {/* Gmail */}
-      <a href="mailto:achyuthkumark2001@gmail.com" style={iconLink}>
-        <i className="fab fa-google"></i>
-      </a>
-    </div>
-  );
-}
+            {/* Gmail */}
+            <a href="mailto:achyuthkumark2001@gmail.com" style={iconLink}>
+              <i className="fab fa-google"></i>
+            </a>
+          </div>
+        );
+      }
 
-function Contact() {
-  return (
-    <section id="contact" style={{ padding: '80px 20px', backgroundColor: '#0f0f0f', color: '#fff' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '40px' }}>Connect With Me</h2>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <ContactForm />
-        <SocialLinks />
-      </div>
-    </section>
-  );
-}
+      function Contact() {
+        return (
+          <section
+            id="contact"
+            style={{
+              padding: "80px 20px",
+              backgroundColor: "#0f0f0f",
+              color: "#fff",
+            }}
+          >
+            <h2 style={{ textAlign: "center", marginBottom: "40px" }}>
+              Connect With Me
+            </h2>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <ContactForm />
+              <SocialLinks />
+            </div>
+          </section>
+        );
+      }
 
-// Shared styles
-const inputStyle = {
-  width: '100%',
-  padding: '12px 16px',
-  margin: '10px 0',
-  border: '1px solid #333',
-  borderRadius: '8px',
-  backgroundColor: '#1a1a1a',
-  color: '#fff',
-  fontSize: '16px'
-};
+      // Shared styles
+      const inputStyle = {
+        width: "100%",
+        padding: "12px 16px",
+        margin: "10px 0",
+        border: "1px solid #333",
+        borderRadius: "8px",
+        backgroundColor: "#1a1a1a",
+        color: "#fff",
+        fontSize: "16px",
+      };
 
-const buttonStyle = {
-  backgroundColor: '#6a0dad',
-  color: '#fff',
-  padding: '12px 20px',
-  border: 'none',
-  borderRadius: '8px',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  width: '100%',
-  marginTop: '10px'
-};
+      const buttonStyle = {
+        backgroundColor: "#6a0dad",
+        color: "#fff",
+        padding: "12px 20px",
+        border: "none",
+        borderRadius: "8px",
+        fontWeight: "bold",
+        cursor: "pointer",
+        width: "100%",
+        marginTop: "10px",
+      };
 
-const iconLink = {
-  color: '#fff',
-  transition: 'transform 0.2s ease',
-  textDecoration: 'none'
-};
+      const iconLink = {
+        color: "#fff",
+        transition: "transform 0.2s ease",
+        textDecoration: "none",
+      };
 
       function App() {
         return (
