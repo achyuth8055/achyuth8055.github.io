@@ -1,0 +1,21 @@
+# robots.txt for imageandpdf.com
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+
+# Disallow certain paths
+Disallow: /api/
+Disallow: /uploads/
+Disallow: /temp/
+Disallow: /backend/
+
+# Sitemap location
+Sitemap: https://imageandpdf.com/sitemap.xml
+
+# Crawl delay for specific bots (optional)
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: Bingbot
+Crawl-delay: 1

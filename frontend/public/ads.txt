@@ -1,0 +1,10 @@
+# ads.txt for imageandpdf.com
+# This file is used to verify authorized digital sellers for Google AdSense
+
+# Format: <EXCHANGE_DOMAIN>, <PUBLISHER_ID>, <RELATIONSHIP>, <CERTIFICATION_AUTHORITY_ID>
+
+# Google AdSense
+# Replace ca-pub-XXXXXXXXXX with your actual AdSense publisher ID
+# google.com, pub-XXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Add additional ad networks here as needed

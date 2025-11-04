@@ -1,0 +1,95 @@
+# ImageAndPDF.com - Unified Requirements
+# Python 3.10+ (3.14+ compatible where possible)
+
+# ============================================
+# Core Web Framework
+# ============================================
+Flask==3.0.3
+Werkzeug==3.0.3
+Flask-CORS>=4.0.0
+
+# ============================================
+# Async Task Queue
+# ============================================
+celery>=5.3.0
+redis>=5.0.0
+flower>=2.0.0            # Celery monitoring
+
+# ============================================
+# Image Processing
+# ============================================
+Pillow>=11.0.0
+pillow-heif>=0.15.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# ============================================
+# PDF Processing - Core
+# ============================================
+PyMuPDF>=1.23.0          # fitz - PDF manipulation, rendering, conversion
+pypdf>=3.17.0            # PDF manipulation (merge, split, rotate)
+PyPDF2==3.0.1            # Alternative PDF library
+pdf2image==1.17.0        # PDF to image conversion
+img2pdf>=0.5.0           # Convert images to PDF
+pdfplumber>=0.10.0       # PDF text extraction
+
+# ============================================
+# PDF Conversion - Office Formats
+# ============================================
+pdf2docx>=0.5.8          # PDF to DOCX conversion
+python-docx>=1.1.0       # DOCX manipulation
+python-pptx>=1.0.0       # PowerPoint file creation/manipulation
+openpyxl>=3.1.2          # Excel file handling
+
+# ============================================
+# Document Generation & Conversion
+# ============================================
+reportlab==4.0.7         # PDF generation
+Markdown>=3.5.0          # Markdown to HTML conversion
+weasyprint>=60.0         # HTML to PDF conversion
+
+# ============================================
+# OCR & Text Extraction
+# ============================================
+pytesseract>=0.3.10      # OCR functionality
+
+# ============================================
+# AI/ML Models (Optional - for advanced features)
+# ============================================
+# Marker - Production Quality PDF to Markdown Conversion
+# marker-pdf>=0.2.0      # High-quality PDF extraction using ML models
+# transformers>=4.36.0   # Required for marker's ML models
+# torch>=2.0.0           # PyTorch for ML models
+# torchvision>=0.15.0    # Computer vision models
+
+# Note: Uncomment above if you need AI-powered PDF extraction
+# Requires significant disk space (~2-3GB for models)
+
+# ============================================
+# Background Removal (AI-based)
+# ============================================
+# torch>=2.0.0
+# torchvision>=0.15.0
+
+# For Python 3.10-3.13 only:
+# rembg>=2.0.50
+# onnxruntime>=1.15.0
+
+# ============================================
+# Task Queue & Async Processing
+# ============================================
+celery>=5.3.0            # Distributed task queue
+redis>=5.0.0             # Message broker for Celery
+flower>=2.0.0            # Celery monitoring tool
+
+# ============================================
+# Utilities
+# ============================================
+qrcode[pil]==7.4.2       # QR code generation
+
+# ============================================
+# Development Dependencies (Optional)
+# ============================================
+# pytest>=7.0.0
+# black>=23.0.0
+# flake8>=6.0.0

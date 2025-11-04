@@ -1,0 +1,10 @@
+pdf2docx
+rst2pdf
+
+# define sphinx versioning
+sphinx==5.3.0
+autodoc
+furo
+sphinx_copybutton
+sphinxcontrib.apidoc
+sphinx_markdown_builder

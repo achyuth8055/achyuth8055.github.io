@@ -1,0 +1,5 @@
+
+{
+  "name": "PDF Tool Suite",
+  "description": "A web application inspired by iLovePDF, providing a suite of tools to manage and manipulate PDF files. Users can select a tool, upload their documents, and download the processed files."
+}
