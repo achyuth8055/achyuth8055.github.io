@@ -1,0 +1,132 @@
+@import '../../../premium-theme.scss';
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: var(--spacing-xl);
+}
+
+.errorContent {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-2xl);
+  max-width: 600px;
+  text-align: center;
+  animation: slideIn 0.4s ease-out;
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.errorIcon {
+  color: #ff6b6b !important;
+  margin-bottom: var(--spacing-lg);
+  animation: pulse 2s ease-in-out infinite;
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.errorTitle {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: #2d3748;
+  margin-bottom: var(--spacing-md);
+}
+
+.errorMessage {
+  font-size: 1.1rem;
+  color: #718096;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+}
+
+.errorDetails {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  text-align: left;
+
+  summary {
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    color: #4a5568;
+    margin-bottom: var(--spacing-sm);
+
+    &:hover {
+      color: #2d3748;
+    }
+  }
+}
+
+.errorStack {
+  background: #2d3748;
+  color: #f7fafc;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-top: var(--spacing-sm);
+}
+
+.errorActions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.resetButton,
+.backButton {
+  min-width: 150px;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .errorContent {
+    padding: var(--spacing-xl);
+  }
+
+  .errorTitle {
+    font-size: 1.5rem;
+  }
+
+  .errorMessage {
+    font-size: 1rem;
+  }
+
+  .errorActions {
+    flex-direction: column;
+
+    .resetButton,
+    .backButton {
+      width: 100%;
+    }
+  }
+}

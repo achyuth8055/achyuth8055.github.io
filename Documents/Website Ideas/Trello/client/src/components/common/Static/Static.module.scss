@@ -1,0 +1,94 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .message {
+    align-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeIn var(--transition-slow);
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .messageIcon {
+    margin-top: -84px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+
+  .messageTitle {
+    font-size: var(--font-size-4xl);
+    margin: var(--spacing-lg) 0 var(--spacing-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.5px;
+  }
+
+  .messageContent {
+    font-size: var(--font-size-lg);
+    line-height: 1.6;
+    margin: var(--spacing-xs) 0 0;
+    text-align: center;
+    font-weight: var(--font-weight-medium);
+    max-width: 600px;
+    padding: 0 var(--spacing-lg);
+  }
+
+  .wrapper {
+    height: 100%;
+    margin-top: 116px;
+  }
+
+  .wrapperBoard {
+    margin-top: 174px;
+  }
+
+  .wrapperBoardWithFavorites {
+    margin-top: 264px;
+  }
+
+  .wrapperFlex {
+    display: flex;
+  }
+
+  .wrapperLoader {
+    position: relative;
+  }
+
+  .wrapperProject {
+    margin-top: 98px;
+  }
+
+  .wrapperProjectWithFavorites {
+    margin-top: 188px;
+  }
+
+  .wrapperTransitioning {
+    transition: margin-top var(--transition-normal) ease;
+  }
+
+  .wrapperVertical {
+    overflow: hidden;
+  }
+
+  .wrapperWithFavorites {
+    margin-top: 206px;
+  }
+}

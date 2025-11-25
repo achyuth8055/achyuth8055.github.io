@@ -1,0 +1,131 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    padding: 0;
+    transition: var(--transition-fast);
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  // TODO: provide for different sizes
+  .creatorIndicator {
+    background: var(--bg-primary);
+    border-radius: 50%;
+    bottom: -2px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    height: 12px;
+    line-height: 12px;
+    position: absolute;
+    right: -2px;
+    width: 12px;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--bg-primary);
+  }
+
+  .initials {
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .wrapper {
+    border-radius: 50%;
+    color: var(--text-inverse);
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-fast);
+    border: 2px solid var(--bg-primary);
+  }
+
+  .wrapperHoverable:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Sizes */
+
+  .wrapperTiny {
+    font-size: 10px;
+    height: 24px;
+    line-height: 20px;
+    padding: 2px 0;
+    width: 24px;
+  }
+
+  .wrapperSmall {
+    font-size: var(--font-size-xs);
+    height: 28px;
+    padding: 8px 0;
+    width: 28px;
+  }
+
+  .wrapperMedium {
+    font-size: var(--font-size-sm);
+    height: 32px;
+    padding: 10px 0;
+    width: 32px;
+  }
+
+  .wrapperLarge {
+    font-size: var(--font-size-sm);
+    height: 36px;
+    padding: 12px 0 10px;
+    width: 36px;
+  }
+
+  .wrapperMassive {
+    font-size: var(--font-size-4xl);
+    height: 100px;
+    padding: 32px 0 10px;
+    width: 100px;
+  }
+
+  /* Backgrounds */
+
+  .backgroundEmerald {
+    background: #2ecc71;
+  }
+
+  .backgroundPeterRiver {
+    background: #3498db;
+  }
+
+  .backgroundWisteria {
+    background: #8e44ad;
+  }
+
+  .backgroundCarrot {
+    background: #e67e22;
+  }
+
+  .backgroundAlizarin {
+    background: #e74c3c;
+  }
+
+  .backgroundTurquoise {
+    background: #1abc9c;
+  }
+
+  .backgroundMidnightBlue {
+    background: #2c3e50;
+  }
+}

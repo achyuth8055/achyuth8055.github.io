@@ -1,0 +1,107 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    padding: 0;
+    transition: var(--transition-fast);
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  .statusIcon {
+    line-height: 1;
+    margin: 0 0 0 var(--spacing-xs);
+  }
+
+  .wrapper {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    display: inline-block;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .wrapperHoverable:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  /* Sizes */
+
+  .wrapperTiny {
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+    padding: 2px var(--spacing-xs);
+  }
+
+  .wrapperSmall {
+    font-size: var(--font-size-xs);
+    line-height: 22px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .wrapperMedium {
+    font-size: var(--font-size-sm);
+    line-height: 24px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  /* Statuses */
+
+  .wrapperDueSoon {
+    background: #F2D600;
+    color: #172B4D;
+    border-color: rgba(242, 214, 0, 0.3);
+    font-weight: var(--font-weight-semibold);
+
+    &.wrapperHoverable:hover {
+      background: #E6CA00;
+      color: #172B4D;
+    }
+  }
+
+  .wrapperOverdue {
+    background: #EB5A46;
+    color: var(--text-inverse);
+    border-color: rgba(235, 90, 70, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    font-weight: var(--font-weight-semibold);
+
+    &.wrapperHoverable:hover {
+      background: #D94A3A;
+      color: var(--text-inverse);
+    }
+  }
+
+  .wrapperCompleted {
+    background: #61BD4F;
+    color: var(--text-inverse);
+    border-color: rgba(97, 189, 79, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    font-weight: var(--font-weight-semibold);
+
+    &.wrapperHoverable:hover {
+      background: #51AD3F;
+      color: var(--text-inverse);
+    }
+  }
+}

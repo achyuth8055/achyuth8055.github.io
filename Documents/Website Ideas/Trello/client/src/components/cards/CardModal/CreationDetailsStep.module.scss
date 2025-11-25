@@ -1,0 +1,67 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .content {
+    display: inline-block;
+    width: calc(100% - 44px);
+  }
+
+  .information {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    width: fit-content;
+  }
+
+  .informationIcon {
+    margin-right: 0;
+    opacity: 0.7;
+    color: var(--primary-color);
+  }
+
+  .name {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    padding: 9px 28px 0 2px;
+  }
+
+  .userWrapper {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    transition: background var(--transition-fast);
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+
+  .user {
+    display: inline-block;
+    padding-right: var(--spacing-sm);
+    padding-top: 10px;
+    vertical-align: top;
+  }
+
+  .username {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+    padding: 2px 0 2px 2px;
+    word-wrap: break-word;
+  }
+}

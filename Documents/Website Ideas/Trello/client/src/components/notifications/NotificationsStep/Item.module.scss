@@ -1,0 +1,65 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .author {
+    color: var(--text-primary);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+  }
+
+  .button {
+    background: transparent;
+    box-shadow: none;
+    border-radius: var(--radius-md);
+    float: right;
+    height: 28px;
+    line-height: 28px;
+    margin: 0;
+    min-height: auto;
+    padding: 0;
+    transition: all var(--transition-fast);
+    width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background: var(--bg-tertiary);
+      transform: scale(1.05);
+    }
+  }
+
+  .content {
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+    min-height: 36px;
+    overflow: hidden;
+    padding: 0 var(--spacing-xs) 0 var(--spacing-sm);
+    vertical-align: top;
+    width: calc(100% - 60px);
+    word-break: break-word;
+  }
+
+  .date {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .wrapper {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: var(--bg-tertiary);
+      transform: translateX(4px);
+    }
+  }
+}

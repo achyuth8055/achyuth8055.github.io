@@ -1,0 +1,92 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .attachment {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+  }
+
+  .attachmentContent {
+    color: #5e6c84;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    max-width: 176px;
+    outline: none;
+    overflow: hidden;
+    padding: 0 4px;
+    text-overflow: ellipsis;
+    transition: color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .attachmentLeft {
+    margin-right: var(--spacing-xs);
+  }
+
+  .attachments {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+
+    &:not(:last-child) {
+      margin-right: var(--spacing-md);
+    }
+  }
+
+  .descriptionText {
+    flex: 1;
+    color: var(--text-tertiary);
+    font-size: var(--font-size-sm);
+  }
+
+  .hidable {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .name {
+    color: #172b4d;
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 30%;
+    line-height: 20px;
+  }
+
+  .nameClosed {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .notification {
+    background: var(--danger-color);
+    color: var(--text-inverse);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 20px;
+    padding: 0 var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-full);
+    outline: none;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  .wrapper {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

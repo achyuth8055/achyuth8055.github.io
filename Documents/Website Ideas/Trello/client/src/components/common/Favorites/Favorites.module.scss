@@ -1,0 +1,74 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .card {
+    height: 72px;
+    width: 168px;
+    box-shadow: var(--shadow-card);
+    transition: all var(--transition-base);
+
+    &:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+  }
+
+  .cardWrapper:not(:last-child) {
+    margin-right: var(--spacing-lg);
+  }
+
+  .cards {
+    display: flex;
+    height: 110px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: var(--spacing-md) var(--spacing-lg) 0 var(--spacing-lg);
+    gap: var(--spacing-xs);
+
+    @supports (-moz-appearance: none) {
+      scrollbar-color: rgba(0, 102, 204, 0.3) transparent;
+      scrollbar-width: thin;
+    }
+
+    &:hover {
+      height: 92px;
+    }
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 0 var(--spacing-lg);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 102, 204, 0.3);
+      border-radius: var(--radius-full);
+
+      &:hover {
+        background: rgba(0, 102, 204, 0.5);
+      }
+    }
+  }
+
+  .wrapper {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    height: 0;
+    overflow-y: hidden;
+    transition: height var(--transition-base) ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .wrapperActive {
+    height: 92px;
+  }
+}

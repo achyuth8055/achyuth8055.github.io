@@ -1,0 +1,59 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+:global(#app) {
+  .action:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .button {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 20px;
+    outline: none;
+    padding: 6px 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary-color);
+      transform: translateY(-1px);
+    }
+  }
+
+  .buttonGroup {
+    .button {
+      border-radius: 0;
+
+      &:enabled {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-primary);
+
+        &:hover {
+          background: rgba(255, 255, 255, 1);
+          color: var(--primary-color);
+        }
+      }
+
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+  }
+}

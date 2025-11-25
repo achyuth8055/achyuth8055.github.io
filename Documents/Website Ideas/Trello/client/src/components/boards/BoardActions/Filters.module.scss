@@ -1,0 +1,135 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .filter {
+    margin-right: var(--spacing-sm);
+  }
+
+  .filterButton {
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    outline: none;
+    padding: var(--spacing-xs);
+    transition: all var(--transition-fast);
+
+    &:not(:first-of-type) {
+      margin-left: var(--spacing-sm);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+  }
+
+  .filterItem {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0;
+    line-height: 0;
+    margin-right: var(--spacing-xs);
+    max-width: 190px;
+    vertical-align: top;
+  }
+
+  .filterLabel {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    padding: var(--spacing-xs) var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .filterLabelIcon {
+    line-height: 1;
+    font-size: 14px;
+  }
+
+  .filterTitle {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #000000;
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    padding: var(--spacing-xs) var(--spacing-md);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .search {
+    height: 32px;
+    margin: 0 var(--spacing-md);
+    transition: width var(--transition-base) ease;
+    width: 280px;
+
+    @media only screen and (width < 768px) {
+      width: 220px;
+    }
+
+    input {
+      font-size: var(--font-size-sm);
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  .searchInactive {
+    color: #000000;
+    height: 28px;
+    width: 220px;
+
+    input {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: var(--radius-lg);
+      color: #000000 !important;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
+      transition: all var(--transition-fast);
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.85);
+        border-color: rgba(0, 0, 0, 0.15);
+      }
+
+      &:focus {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.3);
+      }
+    }
+  }
+}

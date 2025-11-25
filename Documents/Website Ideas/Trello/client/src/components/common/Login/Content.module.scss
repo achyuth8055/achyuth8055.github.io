@@ -1,0 +1,154 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .cover {
+    background: url("../../../assets/images/cover.jpg") left / cover;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(94, 108, 132, 0.05) 100%);
+    }
+  }
+
+  .coverOverlay {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .divider {
+    font-weight: var(--font-weight-normal);
+    color: var(--text-tertiary) !important;
+  }
+
+  .formFooter {
+    color: var(--text-tertiary);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    margin-top: var(--spacing-lg);
+  }
+
+  .formTitle {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-xl);
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+    animation: fadeIn var(--transition-slow);
+  }
+
+  .formSubtitle {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    animation: fadeIn var(--transition-slow) 0.1s;
+  }
+
+  .formWrapper {
+    margin-bottom: var(--spacing-xl);
+    animation: slideUp var(--transition-slow) 0.2s;
+  }
+
+  .fullHeight {
+    height: 100%;
+  }
+
+  .grid {
+    margin: 0;
+  }
+
+  .inputLabel {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .inputWrapper {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .loginWrapper {
+    margin: 0 auto;
+    max-width: 480px;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    background: var(--bg-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    animation: slideUp var(--transition-slow);
+  }
+
+  .wrapper {
+    background: var(--bg-secondary);
+  }
+
+  // Premium input styles
+  .input {
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    transition: all var(--transition-base) !important;
+    font-size: var(--font-size-sm) !important;
+
+    &:hover {
+      border-color: var(--border-hover) !important;
+    }
+
+    &:focus {
+      border-color: var(--primary-color) !important;
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1) !important;
+    }
+  }
+
+  // Premium button overrides
+  button.ui.button {
+    border-radius: var(--radius-md) !important;
+    font-weight: var(--font-weight-medium) !important;
+    transition: all var(--transition-base) !important;
+    box-shadow: var(--shadow-sm) !important;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md) !important;
+    }
+
+    &.primary {
+      background: var(--primary-color) !important;
+
+      &:hover {
+        background: var(--primary-dark) !important;
+      }
+    }
+
+    &.basic {
+      background: transparent !important;
+      border: 2px solid var(--border-color) !important;
+      color: var(--text-secondary) !important;
+
+      &:hover {
+        background: var(--bg-tertiary) !important;
+        border-color: var(--border-hover) !important;
+        color: var(--text-primary) !important;
+      }
+    }
+  }
+}

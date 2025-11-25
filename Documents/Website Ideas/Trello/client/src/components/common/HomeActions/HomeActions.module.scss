@@ -1,0 +1,63 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .action {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: var(--spacing-sm);
+
+    &:first-child {
+      padding-left: var(--spacing-lg);
+    }
+
+    &:last-child {
+      padding-right: var(--spacing-lg);
+    }
+
+    &:not(:last-child) {
+      margin-right: var(--spacing-md);
+    }
+  }
+
+  .actionFilters {
+    flex-grow: 1;
+  }
+
+  .actionRightSide {
+    margin-left: auto;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    padding: var(--spacing-md) 0;
+    scrollbar-width: none;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

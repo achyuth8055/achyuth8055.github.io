@@ -1,0 +1,164 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .editButton {
+    background: transparent;
+    box-shadow: none;
+    border-radius: var(--radius-md);
+    color: var(--primary-color);
+    font-size: 15px;
+    line-height: 34px;
+    margin-left: var(--spacing-sm);
+    opacity: 0;
+    padding: 0;
+    width: 34px;
+    height: 34px;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      background: rgba(0, 102, 204, 0.1);
+      transform: scale(1.05);
+    }
+  }
+
+  .item {
+    cursor: auto;
+    user-select: auto;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    color: var(--text-primary);
+
+    &:before {
+      background: none;
+    }
+
+    &:active,
+    &:hover {
+      background: rgba(0, 102, 204, 0.08);
+      color: var(--text-primary);
+
+      .editButton {
+        opacity: 1;
+      }
+    }
+  }
+
+  .itemHoverable:hover {
+    cursor: pointer;
+    background: rgba(0, 102, 204, 0.1);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .itemIconEnabled {
+    color: var(--success-color);
+  }
+
+  .logo {
+    color: #000000;
+    flex: 0 0 auto;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    line-height: 50px;
+    padding: 0 var(--spacing-lg);
+    text-transform: uppercase;
+    font-size: var(--font-size-xl);
+    text-shadow: none;
+    transition: var(--transition-fast);
+
+    &:hover {
+      color: var(--primary-dark);
+      transform: scale(1.02);
+    }
+
+    &:before {
+      background: none;
+    }
+  }
+
+  .menu {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #000000;
+    flex: 1 1 auto;
+    height: 56px;
+    margin: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+
+    [data-theme='dark'] & {
+      background: rgba(28, 31, 36, 0.8);
+      color: var(--text-inverse);
+    }
+  }
+
+  .notification {
+    background: var(--danger-color);
+    border-radius: var(--radius-full);
+    color: var(--text-inverse);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    height: 18px;
+    left: 22px;
+    line-height: 1;
+    min-width: 18px;
+    padding: 0 var(--spacing-xs);
+    position: absolute;
+    text-align: center;
+    top: 6px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    animation: notificationPulse 2s ease-in-out infinite;
+
+    @keyframes notificationPulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+  }
+
+  .userName {
+    margin-right: var(--spacing-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+
+    @media only screen and (width < 768px) {
+      display: none;
+    }
+  }
+
+  .wrapper {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex: 0 0 auto;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    [data-theme='dark'] & {
+      background: rgba(22, 26, 31, 0.8);
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+}

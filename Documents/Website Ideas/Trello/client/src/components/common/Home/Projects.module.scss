@@ -1,0 +1,136 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .addButton {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-lg);
+    color: #000000;
+    cursor: pointer;
+    fill: #000000;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.2);
+      color: #000000;
+      fill: #000000;
+      background: rgba(255, 255, 255, 0.75);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+
+      .addButtonCover {
+        filter: brightness(1.1);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .addButtonCover {
+    background: rgba(255, 255, 255, 0.12);
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: filter var(--transition-fast);
+  }
+
+  .addButtonTitle {
+    display: table-cell;
+    font-size: var(--font-size-md);
+    line-height: 1.4;
+    vertical-align: middle;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .addButtonTitleIcon {
+    display: block;
+    margin: 0 auto var(--spacing-md);
+    width: 36px;
+  }
+
+  .addButtonTitleWrapper {
+    display: table;
+    height: 100%;
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    width: 100%;
+  }
+
+  .card {
+    box-shadow: var(--shadow-md);
+    height: 150px;
+    transition: var(--transition-normal);
+    border-radius: var(--radius-lg);
+
+    &:hover {
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-3px);
+    }
+  }
+
+  .column {
+    @media only screen and (width < 840px) {
+      width: 50% !important;
+    }
+
+    @media only screen and (840px <= width < 1120px) {
+      width: 33.3333333333% !important;
+    }
+
+    @media only screen and (1120px <= width < 1400px) {
+      width: 25% !important;
+    }
+
+    @media only screen and (1400px <= width < 1680px) {
+      width: 20% !important;
+    }
+
+    @media only screen and (1680px <= width < 1960px) {
+      width: 16.6666666667% !important;
+    }
+
+    @media only screen and (1960px <= width < 2240px) {
+      width: 14.2857142857% !important;
+    }
+
+    @media only screen and (width >= 2240px) {
+      width: 12.5% !important;
+    }
+  }
+
+  .title {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-md) 0 var(--spacing-md) 2px;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .titleIcon {
+    margin-right: var(--spacing-sm);
+  }
+
+  .wrapper:not(:last-child) {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .wrapperWithoutTitle {
+    margin-top: var(--spacing-md);
+  }
+}

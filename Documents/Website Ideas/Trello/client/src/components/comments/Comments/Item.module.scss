@@ -1,0 +1,106 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .actions {
+    margin-left: var(--spacing-md);
+    display: flex;
+    gap: var(--spacing-xs);
+
+    button {
+      font-size: var(--font-size-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      transition: var(--transition-fast);
+
+      &:hover {
+        background: var(--bg-tertiary);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .bubble {
+    background: var(--bg-primary);
+    border-radius: 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    box-sizing: border-box;
+    display: inline-block;
+    line-height: 1.5;
+    max-width: 90%;
+    min-width: 40%;
+    overflow: hidden;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    transition: var(--transition-normal);
+    animation: commentSlideIn 0.2s ease-out;
+
+    @keyframes commentSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    &:hover {
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  .bubbleRight {
+    background: rgba(0, 102, 204, 0.08);
+    border-radius: var(--radius-lg) 0 var(--radius-lg) var(--radius-lg);
+    border-color: rgba(0, 102, 204, 0.2);
+    float: right;
+  }
+
+  .content {
+    display: inline-block;
+    line-height: 1.5;
+    vertical-align: top;
+    width: calc(100% - 40px);
+  }
+
+  .contentWithoutUser {
+    margin-left: 40px;
+  }
+
+  .date {
+    color: var(--text-tertiary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-normal);
+  }
+
+  .header {
+    color: var(--text-primary);
+    display: flex;
+    font-weight: var(--font-weight-bold);
+    justify-content: space-between;
+    line-height: 20px;
+    margin-bottom: var(--spacing-xs);
+    align-items: center;
+  }
+
+  .information {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-sm);
+    align-items: center;
+  }
+
+  .user {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm) var(--spacing-xs) 0;
+    position: sticky;
+    top: 0;
+    vertical-align: top;
+  }
+}

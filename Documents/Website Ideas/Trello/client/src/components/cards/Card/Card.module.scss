@@ -1,0 +1,143 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .actionsButton {
+    background: #091e420a;
+    box-shadow: none;
+    border-radius: 3px;
+    box-sizing: content-box;
+    color: #172b4d;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    min-height: auto;
+    opacity: 0;
+    outline: none;
+    padding: 4px;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    transition: all 0.15s ease;
+    width: 24px;
+    height: 24px;
+
+    &:focus-visible {
+      opacity: 1;
+      outline: 2px solid #0079bf;
+      outline-offset: 2px;
+    }
+
+    [data-theme='dark'] & {
+      background: rgba(255, 255, 255, 0.1);
+      color: #b6c2cf;
+    }
+
+    &:hover {
+      background: #091e4214;
+      color: #172b4d;
+      transform: scale(1.05);
+
+      [data-theme='dark'] & {
+        background: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+      }
+    }
+  }
+
+  .colorLine {
+    border-radius: 0;
+    height: 8px;
+    margin-bottom: 4px;
+  }
+
+  .content {
+    cursor: pointer;
+    padding: 8px 12px;
+    transition: none;
+    min-height: 36px;
+
+    &:after {
+      clear: both;
+      content: "";
+      display: table;
+    }
+  }
+
+  .contentDisabled {
+    filter: saturate(0.5);
+    opacity: 0.64;
+  }
+
+  .wrapper {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25);
+    border: none;
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 3px solid #0079bf;
+      outline-offset: 2px;
+    }
+
+    [data-theme='dark'] & {
+      background: #282e33;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    }
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(9, 30, 66, 0.15), 0 0 1px rgba(9, 30, 66, 0.31);
+      transform: translateY(-1px);
+
+      .actionsButton {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25);
+    }
+  }
+
+  .wrapperRecent:not(:hover) {
+    overflow: hidden;
+
+    &:after {
+      animation: slide 4s infinite 2s;
+      background: linear-gradient(to right,
+          rgba(0, 102, 204, 0) 0%,
+          rgba(0, 102, 204, 0.1) 50%,
+          rgba(0, 102, 204, 0) 100%);
+      content: '';
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transform: translateX(100%);
+      width: 100%;
+
+      @keyframes slide {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        50% {
+          transform: translateX(100%);
+        }
+
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    }
+  }
+}

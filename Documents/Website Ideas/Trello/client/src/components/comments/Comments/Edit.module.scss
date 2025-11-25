@@ -1,0 +1,71 @@
+/*!
+ * Copyright (c) 2024 PLANKA Software GmbH
+ * Licensed under the Fair Use License: https://github.com/plankanban/planka/blob/master/LICENSE.md
+ */
+
+@import '../../../premium-theme.scss';
+
+:global(#app) {
+  .controls {
+    clear: both;
+    margin-top: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-sm);
+
+    button {
+      border-radius: var(--radius-md) !important;
+      font-weight: var(--font-weight-medium) !important;
+      transition: var(--transition-fast) !important;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-sm) !important;
+      }
+    }
+  }
+
+  .field {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+
+    textarea {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin: 0 !important;
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: var(--font-size-sm);
+      transition: var(--transition-fast);
+
+      &:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        outline: none;
+      }
+    }
+  }
+
+  .mention {
+    background-color: rgba(0, 102, 204, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 2px 4px;
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .suggestion {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: var(--transition-fast);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+}
