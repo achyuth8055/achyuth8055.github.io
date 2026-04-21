@@ -4,46 +4,39 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Navigation from './components/Navigation';
 import HeroSection from './sections/HeroSection';
-import WorkMosaicSection from './sections/WorkMosaicSection';
+import MarqueeSection from './sections/MarqueeSection';
 import AboutSection from './sections/AboutSection';
-import PrinciplesSection from './sections/PrinciplesSection';
-import SkillsSection from './sections/SkillsSection';
-import ExperienceSection from './sections/ExperienceSection';
 import ProjectsSection from './sections/ProjectsSection';
+import ExperienceSection from './sections/ExperienceSection';
+import OpenSourceSection from './sections/OpenSourceSection';
+import SkillsSection from './sections/SkillsSection';
 import ContactSection from './sections/ContactSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    // Refresh ScrollTrigger after all components mount
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh();
     }, 100);
-
     return () => {
       clearTimeout(timeout);
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
   return (
-    <div className="relative bg-[#0B0B10]">
-      {/* Noise overlay */}
+    <div className="relative bg-[#07070B]">
       <div className="noise-overlay" />
-      
-      {/* Navigation */}
       <Navigation />
-
-      {/* Main content */}
       <main className="relative">
         <HeroSection />
-        <WorkMosaicSection />
+        <MarqueeSection />
         <AboutSection />
-        <PrinciplesSection />
-        <SkillsSection />
-        <ExperienceSection />
         <ProjectsSection />
+        <ExperienceSection />
+        <OpenSourceSection />
+        <SkillsSection />
         <ContactSection />
       </main>
     </div>

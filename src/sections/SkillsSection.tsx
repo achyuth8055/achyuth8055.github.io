@@ -1,139 +1,127 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {
+  Code,
+  Server,
+  Layout,
+  Database,
+  Cloud,
+  Smartphone,
+  Brain,
+  Award,
+} from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skillCategories = [
+const categories = [
   {
+    icon: Code,
     title: 'Languages',
-    skills: ['Java', 'Python', 'SQL', 'JavaScript']
+    skills: ['Java', 'Swift', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
   },
   {
-    title: 'Backend & Frameworks',
-    skills: ['Spring Boot', 'Hibernate', 'REST APIs', 'Node.js', 'Express', 'PHP']
+    icon: Smartphone,
+    title: 'iOS',
+    skills: ['SwiftUI', 'UIKit', 'AVFoundation', 'UserNotifications', 'HealthKit', 'CloudKit'],
   },
   {
+    icon: Server,
+    title: 'Backend',
+    skills: ['Spring Boot', 'Node.js', 'Express', 'REST', 'Hibernate', 'PHP'],
+  },
+  {
+    icon: Layout,
     title: 'Frontend',
-    skills: ['React.js', 'HTML5', 'CSS3', 'Bootstrap', 'Redux']
+    skills: ['React', 'Next.js', 'Redux', 'Tailwind', 'HTML5', 'CSS3'],
   },
   {
-    title: 'System Design',
-    skills: ['Microservices', 'Domain-Driven Design', 'Event-Driven Systems', 'Design Patterns']
+    icon: Database,
+    title: 'Data',
+    skills: ['MySQL', 'MongoDB', 'DynamoDB', 'Redis', 'Kafka'],
   },
   {
-    title: 'Databases',
-    skills: ['MySQL', 'MongoDB', 'DynamoDB', 'Redis', 'Kafka']
-  },
-  {
+    icon: Cloud,
     title: 'Cloud & DevOps',
-    skills: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'Jenkins', 'GitHub Actions']
+    skills: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins', 'GitHub Actions'],
   },
   {
-    title: 'Core CS',
-    skills: ['Data Structures & Algorithms', 'OOP', 'DBMS', 'Operating Systems']
+    icon: Brain,
+    title: 'AI & Automation',
+    skills: ['LLM APIs', 'NLP', 'Web Scraping', 'SEO Scoring', 'Data Pipelines'],
   },
   {
+    icon: Award,
     title: 'Certifications',
-    skills: ['AWS Certified Cloud Practitioner']
-  }
+    skills: ['AWS Cloud Practitioner'],
+  },
 ];
 
 export default function SkillsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const title = titleRef.current;
-    const cards = cardRefs.current.filter((c): c is HTMLDivElement => c !== null);
-
-    if (!section || !title || cards.length === 0) return;
-
+    if (!section) return;
     const ctx = gsap.context(() => {
-      // Title animation
-      gsap.set(title, { opacity: 0, y: 20 });
+      const items = section.querySelectorAll('.anim');
+      gsap.set(items, { opacity: 0, y: 22 });
       ScrollTrigger.create({
-        trigger: title,
-        start: 'top 80%',
+        trigger: section,
+        start: 'top 78%',
+        once: true,
         onEnter: () => {
-          gsap.to(title, {
+          gsap.to(items, {
             opacity: 1,
             y: 0,
             duration: 0.5,
-            ease: 'power2.out'
+            stagger: 0.04,
+            ease: 'power3.out',
           });
         },
-        once: true
       });
-
-      // Cards batch animation
-      cards.forEach((card, i) => {
-        gsap.set(card, { opacity: 0, y: 20 });
-        
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top 85%',
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              duration: 0.4,
-              delay: (i % 4) * 0.05,
-              ease: 'power2.out'
-            });
-          },
-          once: true
-        });
-      });
-
     }, section);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full bg-[#0B0B10] z-55 py-[8vh] px-[6vw]"
+      className="relative w-full bg-[#07070B] py-[14vh] px-[6vw] overflow-hidden"
     >
-      {/* Title */}
-      <h2 
-        ref={titleRef}
-        className="text-display text-[clamp(44px,6vw,96px)] text-[#F4F4F2] mb-4"
-      >
-        Skills
-      </h2>
-      <p className="text-[#A6A6AA] text-[clamp(14px,1.2vw,18px)] mb-12 max-w-xl">
-        A comprehensive toolkit built over years of building production-grade applications.
-      </p>
+      <div className="max-w-[1280px] mx-auto">
+        <div className="mb-12 max-w-3xl">
+          <span className="anim eyebrow">Toolkit</span>
+          <h2 className="anim text-display text-[clamp(40px,6vw,88px)] text-[var(--text)] mt-4">
+            Skills &amp; <span className="gradient-text">stack</span>.
+          </h2>
+          <p className="anim text-[var(--text-mut)] text-[clamp(15px,1.2vw,18px)] mt-5 max-w-2xl">
+            A toolkit built over years of shipping production-grade web, iOS, and backend
+            systems.
+          </p>
+        </div>
 
-      {/* Skills grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl">
-        {skillCategories.map((category, idx) => (
-          <div
-            key={category.title}
-            ref={el => { cardRefs.current[idx] = el; }}
-            className="card-white p-6 card-white-hover gpu-accelerated"
-          >
-            <h3 className="text-display text-[clamp(16px,1.3vw,20px)] text-[#0B0B10] mb-4">
-              {category.title}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {category.skills.map((skill) => (
-                <span 
-                  key={skill}
-                  className="px-2.5 py-1 bg-[#0B0B10]/5 rounded-full text-xs text-[#0B0B10]/80
-                             hover:bg-[#FF4D2E]/10 hover:text-[#FF4D2E] transition-colors duration-200"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {categories.map((c) => {
+            const Icon = c.icon;
+            return (
+              <div key={c.title} className="anim card-dark card-dark-hover p-6 gpu">
+                <div className="w-10 h-10 rounded-xl bg-[var(--accent)]/10 border border-[var(--accent)]/25 flex items-center justify-center mb-4">
+                  <Icon className="w-4 h-4 text-[var(--accent)]" />
+                </div>
+                <h3 className="text-display text-lg text-[var(--text)] mb-3">{c.title}</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {c.skills.map((s) => (
+                    <span key={s} className="chip">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

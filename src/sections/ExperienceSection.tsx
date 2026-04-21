@@ -1,171 +1,162 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const experiences = [
+type Experience = {
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  type: 'Freelance' | 'Full-time' | 'Internship';
+  achievements: string[];
+};
+
+const experiences: Experience[] = [
+  {
+    company: 'Independent Freelance',
+    role: 'Full-Stack & iOS Developer · Automation Engineer',
+    period: 'June 2023 — Present',
+    location: 'Remote · USA / India',
+    type: 'Freelance',
+    achievements: [
+      'Led a complete website redesign for SiteWorkThit.com — restructured information architecture and component system for a noticeably more user-friendly, on-brand experience.',
+      'Shipped ShareItHub.com and contributed to ImageAndPDF.com, owning full-stack delivery from architecture to production deployment.',
+      'Built an AI-powered blog writer that ingests raw drafts and returns publish-ready content with SEO, readability, and keyword-density scoring.',
+      'Designed and shipped two native iOS apps: a premium offline music player with multi-cloud import (Google Drive, OneDrive, local) and a water-reminder companion for daily hydration.',
+      'Engaged by a startup tax-appeal firm: identified that clients struggled to retrieve their parcel PIN, evaluated existing solutions, and — finding none — built an automated scraping pipeline that pulls PIN, historical tax bills, and deed records into a single client-ready report.',
+    ],
+  },
   {
     company: 'Code Mania',
-    role: 'Full Stack Developer',
-    period: 'July 2022 – June 2023',
+    role: 'Full-Stack Developer',
+    period: 'July 2022 — June 2023',
     location: 'Hyderabad, India',
+    type: 'Full-time',
     achievements: [
-      'Developed and maintained responsive web applications using React.js, improving user engagement by 20%',
-      'Built scalable backend services using Node.js and Express, implementing RESTful APIs and authentication mechanisms',
-      'Designed and managed MongoDB and SQL database schemas, optimizing queries to reduce load time by 30%',
-      'Implemented data validation and sanitization to enhance application security and prevent common vulnerabilities',
-      'Deployed applications to cloud platforms (Heroku, DigitalOcean) and managed version control using Git in Agile development cycles'
-    ]
+      'Developed and maintained responsive web applications using React.js, improving user engagement by 20%.',
+      'Built scalable backend services with Node.js and Express, implementing RESTful APIs and authentication.',
+      'Designed and managed MongoDB and SQL schemas, optimizing queries to reduce load time by 30%.',
+      'Deployed applications to Heroku and DigitalOcean and managed Git in Agile cycles.',
+    ],
   },
   {
     company: 'GenY Medium',
     role: 'Jr. Web Developer Intern',
-    period: 'April 2022 – June 2022',
+    period: 'April 2022 — June 2022',
     location: 'Hyderabad, India',
+    type: 'Internship',
     achievements: [
-      'Developed responsive web interfaces using Bootstrap, improving usability and cross-device compatibility',
-      'Assisted in building server-side functionalities using PHP and SQL, handling form processing and database operations',
-      'Participated in code reviews to maintain code quality and adherence to best practices',
-      'Collaborated with team members to troubleshoot production issues and implement timely solutions'
-    ]
-  }
+      'Developed responsive interfaces using Bootstrap, improving cross-device compatibility.',
+      'Built server-side functionality with PHP and SQL, handling form processing and database ops.',
+      'Participated in code reviews and collaborated on production troubleshooting.',
+    ],
+  },
 ];
 
 export default function ExperienceSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const title = titleRef.current;
-    const cards = cardRefs.current.filter((c): c is HTMLDivElement => c !== null);
-
-    if (!section || !title || cards.length === 0) return;
-
+    if (!section) return;
     const ctx = gsap.context(() => {
-      // Title animation
-      gsap.set(title, { opacity: 0, y: 20 });
+      const items = section.querySelectorAll('.anim');
+      gsap.set(items, { opacity: 0, y: 22 });
       ScrollTrigger.create({
-        trigger: title,
-        start: 'top 80%',
+        trigger: section,
+        start: 'top 78%',
+        once: true,
         onEnter: () => {
-          gsap.to(title, {
+          gsap.to(items, {
             opacity: 1,
             y: 0,
-            duration: 0.5,
-            ease: 'power2.out'
+            duration: 0.55,
+            stagger: 0.06,
+            ease: 'power3.out',
           });
         },
-        once: true
       });
-
-      // Cards animation
-      cards.forEach((card, i) => {
-        gsap.set(card, { opacity: 0, y: 30 });
-        
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top 85%',
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              duration: 0.5,
-              delay: i * 0.15,
-              ease: 'power2.out'
-            });
-
-            // Animate bullets after card appears
-            const bullets = card.querySelectorAll('.achievement-item');
-            gsap.fromTo(bullets,
-              { opacity: 0, x: -8 },
-              { 
-                opacity: 1, 
-                x: 0, 
-                stagger: 0.04, 
-                duration: 0.3, 
-                delay: 0.2 + i * 0.15
-              }
-            );
-          },
-          once: true
-        });
-      });
-
     }, section);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id="experience"
-      className="relative w-full bg-[#0B0B10] z-50 py-[8vh] px-[6vw]"
+      className="relative w-full bg-[#07070B] py-[14vh] px-[6vw] overflow-hidden"
     >
-      {/* Title */}
-      <h2 
-        ref={titleRef}
-        className="text-display text-[clamp(44px,6vw,96px)] text-[#F4F4F2] mb-16"
-      >
-        Experience
-      </h2>
+      <div className="max-w-[1280px] mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <span className="anim eyebrow">Career</span>
+          <h2 className="anim text-display text-[clamp(40px,6vw,88px)] text-[var(--text)] mt-4">
+            Experience.
+          </h2>
+          <p className="anim text-[var(--text-mut)] text-[clamp(15px,1.2vw,18px)] mt-5 max-w-2xl">
+            Freelance engagements, product roles, and early-career work — all centered on
+            turning fuzzy requirements into reliable, shipped software.
+          </p>
+        </div>
 
-      {/* Experience cards */}
-      <div className="space-y-8 max-w-5xl">
-        {experiences.map((exp, idx) => (
+        <div className="relative">
+          {/* Vertical timeline line */}
           <div
-            key={exp.company}
-            ref={el => { cardRefs.current[idx] = el; }}
-            className="relative"
-          >
-            {/* Card */}
-            <div className="card-white p-8 card-white-hover gpu-accelerated">
-              {/* Header */}
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <Briefcase className="w-5 h-5 text-[#FF4D2E]" />
-                    <h3 className="text-display text-[clamp(24px,2.5vw,36px)] text-[#0B0B10]">
-                      {exp.company}
-                    </h3>
-                  </div>
-                  <p className="text-[#0B0B10]/80 font-medium text-lg">
-                    {exp.role}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-1 text-sm text-[#6C6C70]">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    {exp.period}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
-                    {exp.location}
+            className="hidden md:block absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[var(--accent)]/40 via-[var(--border-mid)] to-transparent"
+            aria-hidden
+          />
+
+          <div className="space-y-6">
+            {experiences.map((exp) => (
+              <div key={`${exp.company}-${exp.period}`} className="anim relative">
+                {/* Timeline dot */}
+                <div
+                  className="hidden md:block absolute left-0 top-8 w-4 h-4 rounded-full border-2 border-[var(--accent)] bg-[#07070B]"
+                  aria-hidden
+                />
+                <div className="md:pl-12">
+                  <div className="card-dark card-dark-hover p-7 md:p-9 gpu">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-3 mb-1.5">
+                          <Briefcase className="w-4 h-4 text-[var(--accent)]" />
+                          <h3 className="text-display text-[clamp(20px,2vw,28px)] text-[var(--text)]">
+                            {exp.company}
+                          </h3>
+                          <span className="chip chip-accent">{exp.type}</span>
+                        </div>
+                        <p className="text-[var(--text)]/80 font-medium">{exp.role}</p>
+                      </div>
+                      <div className="flex flex-col gap-1 text-sm text-[var(--text-mut)] md:text-right">
+                        <span className="flex items-center gap-2 md:justify-end">
+                          <Calendar className="w-4 h-4" />
+                          {exp.period}
+                        </span>
+                        <span className="flex items-center gap-2 md:justify-end">
+                          <MapPin className="w-4 h-4" />
+                          {exp.location}
+                        </span>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-2.5">
+                      {exp.achievements.map((a, j) => (
+                        <li key={j} className="flex items-start gap-2.5">
+                          <ChevronRight className="w-4 h-4 text-[var(--accent)] mt-0.5 flex-shrink-0" />
+                          <span className="text-sm text-[var(--text-mut)] leading-relaxed">
+                            {a}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-
-              {/* Achievements */}
-              <ul className="space-y-3">
-                {exp.achievements.map((achievement, j) => (
-                  <li 
-                    key={j}
-                    className="achievement-item flex items-start gap-3"
-                  >
-                    <span className="w-1.5 h-1.5 bg-[#FF4D2E] rounded-full mt-2 flex-shrink-0" />
-                    <span className="text-[#6C6C70] text-[clamp(13px,1vw,15px)] leading-relaxed">
-                      {achievement}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

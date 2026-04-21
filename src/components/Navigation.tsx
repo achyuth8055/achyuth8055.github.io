@@ -6,11 +6,11 @@ import { Menu, X, Download } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const navItems = [
-  { label: 'Work', href: '#work-mosaic' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Open Source', href: '#open-source' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' }
 ];
 
@@ -21,7 +21,7 @@ export default function Navigation() {
   useEffect(() => {
     // Show navigation after scrolling past hero
     ScrollTrigger.create({
-      trigger: '#work-mosaic',
+      trigger: '#marquee',
       start: 'top 80%',
       onEnter: () => setIsVisible(true),
       onLeaveBack: () => setIsVisible(false)
@@ -29,7 +29,7 @@ export default function Navigation() {
 
     return () => {
       ScrollTrigger.getAll().forEach(st => {
-        if (st.vars.trigger === '#work-mosaic') st.kill();
+        if (st.vars.trigger === '#marquee') st.kill();
       });
     };
   }, []);

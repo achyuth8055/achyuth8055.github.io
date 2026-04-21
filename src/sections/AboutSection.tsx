@@ -1,142 +1,142 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { GraduationCap, Code2, Rocket, Award } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const highlights = [
+  {
+    icon: GraduationCap,
+    value: 'M.S.',
+    label: 'Computer & Information Systems',
+    sub: 'Lewis University · GPA 3.80',
+  },
+  {
+    icon: Code2,
+    value: '3+ yrs',
+    label: 'Building production software',
+    sub: 'Web · iOS · Cloud',
+  },
+  {
+    icon: Rocket,
+    value: '7+',
+    label: 'Products shipped',
+    sub: 'Freelance & full-time',
+  },
+  {
+    icon: Award,
+    value: 'AWS',
+    label: 'Cloud Practitioner',
+    sub: 'Certified',
+  },
+];
+
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const elementsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const elements = elementsRef.current;
-
-    if (!section || !elements) return;
-
+    if (!section) return;
     const ctx = gsap.context(() => {
-      const cards = elements.querySelectorAll('.about-card');
-      const decor = elements.querySelector('.decor-square');
-
-      // Initial states
-      gsap.set(cards, { opacity: 0, y: 30 });
-      gsap.set(decor, { opacity: 0, scale: 0.8 });
-
-      // Reveal animation
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 70%',
-          once: true
-        }
+      const items = section.querySelectorAll('.anim');
+      gsap.set(items, { opacity: 0, y: 24 });
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 75%',
+        once: true,
+        onEnter: () => {
+          gsap.to(items, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.07,
+            ease: 'power3.out',
+          });
+        },
       });
-
-      tl.to(cards, { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.6, 
-          stagger: 0.1,
-          ease: 'power2.out'
-        })
-        .to(decor, { 
-          opacity: 1, 
-          scale: 1, 
-          duration: 0.5,
-          ease: 'back.out(1.5)'
-        }, '-=0.3');
-
     }, section);
-
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       id="about"
-      className="relative w-full min-h-screen bg-[#0B0B10] z-30 py-20"
+      className="relative w-full bg-[#07070B] py-[14vh] px-[6vw] overflow-hidden"
     >
-      <div ref={elementsRef} className="px-[6vw]">
-        {/* Grid layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Top-left image card */}
-          <div 
-            className="about-card relative rounded-[28px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.25)] gpu-accelerated"
-            style={{ minHeight: '280px' }}
-          >
-            <img 
-              src="/about_workspace.jpg" 
-              alt="Workspace" 
-              className="absolute inset-0 w-full h-full object-cover img-optimized"
-              loading="lazy"
-            />
-          </div>
+      <div className="max-w-[1280px] mx-auto">
+        <div className="mb-14 max-w-3xl">
+          <span className="anim eyebrow">About</span>
+          <h2 className="anim text-display text-[clamp(40px,6vw,88px)] text-[var(--text)] mt-4">
+            A builder who cares about <span className="gradient-text">craft</span>.
+          </h2>
+        </div>
 
-          {/* Top-right text card - About */}
-          <div 
-            className="about-card card-white p-8 flex flex-col justify-center gpu-accelerated"
-          >
-            <h2 className="text-display text-[clamp(28px,3.5vw,48px)] text-[#0B0B10] mb-4">
-              About
-            </h2>
-            <p className="text-[#6C6C70] text-[clamp(13px,1vw,16px)] leading-relaxed">
-              I'm a developer who cares about clarity—clean code, clear UI, and calm user experiences. 
-              Master's in Computer and Information Systems from Lewis University (GPA: 3.80/4.00). 
-              I bring both technical depth and product thinking to every project.
-            </p>
-          </div>
-
-          {/* Bottom-left text card - Approach */}
-          <div 
-            className="about-card card-white p-8 flex flex-col justify-center gpu-accelerated"
-          >
-            <h2 className="text-display text-[clamp(28px,3.5vw,48px)] text-[#0B0B10] mb-4">
-              Approach
-            </h2>
-            <p className="text-[#6C6C70] text-[clamp(13px,1vw,16px)] leading-relaxed mb-4">
-              Prototype early. Test often. Ship with confidence. I collaborate closely and document decisions.
-            </p>
-            <div className="flex flex-col gap-3 mt-2">
-              {[
-                'User-centered design thinking',
-                'Agile development practices',
-                'Continuous integration & delivery',
-                'Performance-first mindset'
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 bg-[#FF4D2E] rounded-full" />
-                  <span className="text-sm text-[#0B0B10]/80">{item}</span>
-                </div>
-              ))}
+        <div className="grid lg:grid-cols-12 gap-10 items-start">
+          {/* Portrait + highlights column */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="anim portrait-frame aspect-[4/5] w-full max-w-[440px] gpu">
+              <img
+                src="/myself.jpg"
+                alt="Achyuth Kummari portrait"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#07070B]/70 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5">
+                <div className="text-display text-2xl text-white">Achyuth Kummari</div>
+                <div className="text-micro text-white/70 mt-1">Illinois, USA</div>
+              </div>
             </div>
           </div>
 
-          {/* Bottom-right image card */}
-          <div 
-            className="about-card relative rounded-[28px] overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.25)] gpu-accelerated"
-            style={{ minHeight: '320px' }}
-          >
-            <img 
-              src="/about_outdoor.jpg" 
-              alt="Outside code" 
-              className="absolute inset-0 w-full h-full object-cover img-optimized"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B0B10]/70 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6">
-              <span className="text-micro text-[#F4F4F2]/70 block mb-1">Outside code</span>
-              <p className="text-[#F4F4F2] text-sm leading-relaxed">
-                Cycling, local coffee spots, and weekend side projects keep me balanced and inspired.
+          {/* Bio + stats */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            <div className="space-y-4 text-[var(--text-mut)] text-[clamp(15px,1.2vw,18px)] leading-relaxed">
+              <p className="anim">
+                I'm a software engineer who gravitates toward clarity — in code, in UI, and in
+                user experience. My work spans full-stack web products, native iOS apps, and the
+                quiet automation that makes real businesses faster.
               </p>
+              <p className="anim">
+                I've redesigned production sites for freelance clients, shipped standalone
+                products like <span className="text-[var(--text)]">NovusChat</span> — an
+                embeddable RAG chatbot that turns any team's docs into a real customer-support
+                agent —{' '}
+                <span className="text-[var(--text)]">ShareItHub</span>,{' '}
+                <span className="text-[var(--text)]">SiteWorkThit</span>, and{' '}
+                <span className="text-[var(--text)]">ImageAndPDF</span>, and built iOS apps — a
+                premium offline music player with multi-cloud import and a water-reminder app
+                that keeps people hydrated.
+              </p>
+              <p className="anim">
+                On the open-source side, I contribute to{' '}
+                <span className="text-[var(--text)]">Apache Maven</span> and{' '}
+                <span className="text-[var(--text)]">Checkstyle</span> — giving back to the JVM
+                tools I use every day.
+              </p>
+            </div>
+
+            <div className="anim grid grid-cols-2 gap-4">
+              {highlights.map((h) => {
+                const Icon = h.icon;
+                return (
+                  <div key={h.label} className="card-dark card-dark-hover p-5 gpu">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-9 h-9 rounded-lg bg-[var(--accent)]/12 border border-[var(--accent)]/30 flex items-center justify-center">
+                        <Icon className="w-4 h-4 text-[var(--accent)]" />
+                      </div>
+                      <div className="text-display text-xl text-[var(--text)]">{h.value}</div>
+                    </div>
+                    <div className="text-sm text-[var(--text)] font-medium">{h.label}</div>
+                    <div className="text-xs text-[var(--text-dim)] mt-1">{h.sub}</div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
-
-        {/* Decorative square */}
-        <div 
-          className="decor-square hidden lg:block absolute w-11 h-11 border-[1.5px] border-[#2A2A35] rounded-[10px]"
-          style={{ left: '48vw', top: '46vh' }}
-        />
       </div>
     </section>
   );
