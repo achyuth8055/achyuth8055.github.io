@@ -122,10 +122,24 @@ export default function HeroSection() {
         </div>
 
         {/* Right column - portrait */}
-        <div className="lg:col-span-5 relative">
+        <div className="lg:col-span-5 relative flex flex-col items-center gap-6">
+          {/* Decorative orbit rings behind portrait */}
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 pointer-events-none">
+            <div
+              className="w-[340px] h-[340px] rounded-full border border-dashed border-[var(--accent)]/15"
+              style={{ animation: 'spin 60s linear infinite' }}
+            />
+          </div>
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 pointer-events-none">
+            <div
+              className="w-[420px] h-[420px] rounded-full border border-[var(--violet)]/10"
+              style={{ animation: 'spin 90s linear infinite reverse' }}
+            />
+          </div>
+
           <div
             ref={portraitTiltRef}
-            className="anim portrait-frame accent-ring aspect-[4/5] w-full max-w-[420px] mx-auto gpu"
+            className="anim portrait-frame accent-ring aspect-[4/3] w-full max-w-[340px] mx-auto gpu"
             style={{ transformStyle: 'preserve-3d' }}
           >
             <img
@@ -134,43 +148,64 @@ export default function HeroSection() {
               loading="eager"
               fetchPriority="high"
               className="absolute inset-0 w-full h-full object-cover"
-              style={{ filter: 'contrast(1.02) saturate(1.05)' }}
+              style={{ filter: 'contrast(1.02) saturate(1.05)', objectPosition: 'center 18%' }}
             />
             {/* Overlay frame elements */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#07070B] via-transparent to-transparent" />
-            <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 border border-white/10 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07070B]/90 via-transparent to-black/20" />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/5 rounded-[28px] pointer-events-none" />
+            <div className="absolute top-3 left-3 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/55 border border-white/10 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-micro text-white">Online</span>
             </div>
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+            <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/55 border border-white/15 backdrop-blur-sm flex items-center justify-center">
+              <ArrowUpRight className="w-3.5 h-3.5 text-white" />
+            </div>
+            <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between">
               <div>
-                <div className="text-display text-xl text-white">Achyuth K.</div>
+                <div className="text-display text-lg text-white leading-none">Achyuth K.</div>
                 <div className="text-micro text-white/70 mt-1">SWE · Builder</div>
               </div>
-              <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                <ArrowUpRight className="w-4 h-4 text-white" />
+              <div className="text-right">
+                <div className="text-micro text-white/60">Based in</div>
+                <div className="text-[11px] font-mono text-white/90">IL, USA</div>
               </div>
+            </div>
+          </div>
+
+          {/* Stats strip below compact portrait */}
+          <div className="anim grid grid-cols-3 gap-3 w-full max-w-[340px]">
+            <div className="card-dark px-3 py-2.5 text-center">
+              <div className="text-display text-lg text-[var(--text)] leading-none">3+</div>
+              <div className="text-[10px] font-mono text-[var(--text-mut)] tracking-wider uppercase mt-1">Years</div>
+            </div>
+            <div className="card-dark px-3 py-2.5 text-center">
+              <div className="text-display text-lg text-[var(--accent)] leading-none">7+</div>
+              <div className="text-[10px] font-mono text-[var(--text-mut)] tracking-wider uppercase mt-1">Shipped</div>
+            </div>
+            <div className="card-dark px-3 py-2.5 text-center">
+              <div className="text-display text-lg text-[var(--violet)] leading-none">OSS</div>
+              <div className="text-[10px] font-mono text-[var(--text-mut)] tracking-wider uppercase mt-1">Active</div>
             </div>
           </div>
 
           {/* Floating info cards around portrait */}
-          <div className="anim hidden md:flex absolute -bottom-4 -left-2 card-dark px-4 py-3 gap-3 items-center float-y-slow">
-            <div className="w-9 h-9 rounded-full bg-[var(--accent)]/15 border border-[var(--accent)]/40 flex items-center justify-center">
-              <span className="text-[var(--accent)] font-bold text-sm">AM</span>
+          <div className="anim hidden md:flex absolute top-8 -left-4 card-dark px-3 py-2.5 gap-2.5 items-center float-y-slow z-10">
+            <div className="w-8 h-8 rounded-full bg-[var(--accent)]/15 border border-[var(--accent)]/40 flex items-center justify-center">
+              <span className="text-[var(--accent)] font-bold text-xs">AM</span>
             </div>
             <div>
-              <div className="text-xs text-[var(--text-mut)]">Contributing to</div>
-              <div className="text-sm font-medium text-[var(--text)]">Apache Maven</div>
+              <div className="text-[10px] text-[var(--text-mut)] leading-none">Contributing</div>
+              <div className="text-xs font-medium text-[var(--text)] mt-1">Apache Maven</div>
             </div>
           </div>
 
-          <div className="anim hidden md:flex absolute -top-4 -right-2 card-dark px-4 py-3 gap-3 items-center float-y">
-            <div className="w-9 h-9 rounded-full bg-[var(--violet)]/15 border border-[var(--violet)]/40 flex items-center justify-center">
-              <span className="text-[var(--violet)] font-bold text-xs">OSS</span>
+          <div className="anim hidden md:flex absolute top-0 -right-4 card-dark px-3 py-2.5 gap-2.5 items-center float-y z-10">
+            <div className="w-8 h-8 rounded-full bg-[var(--violet)]/15 border border-[var(--violet)]/40 flex items-center justify-center">
+              <span className="text-[var(--violet)] font-bold text-[10px]">OSS</span>
             </div>
             <div>
-              <div className="text-xs text-[var(--text-mut)]">Checkstyle</div>
-              <div className="text-sm font-medium text-[var(--text)]">8.4k+ ★</div>
+              <div className="text-[10px] text-[var(--text-mut)] leading-none">Checkstyle</div>
+              <div className="text-xs font-medium text-[var(--text)] mt-1">8.4k+ ★</div>
             </div>
           </div>
         </div>

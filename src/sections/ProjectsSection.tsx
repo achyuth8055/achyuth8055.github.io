@@ -34,7 +34,11 @@ type Project = {
   accent: string;
   gradient: string;
   extra?: string[];
+  previewDomain?: string;
 };
+
+const previewForDomain = (domain: string) =>
+  `https://image.thum.io/get/width/1200/crop/750/noanimate/https://${domain}`;
 
 const projects: Project[] = [
   {
@@ -44,6 +48,7 @@ const projects: Project[] = [
       'An embeddable RAG chatbot that behaves like a real customer-support agent — trained on each client\'s own documents. Website owners upload PDFs, Word docs, and text files; NovusChat builds a private knowledge base (FAISS vector DB, semantic search, real-time streaming) and drops into any site via a one-line widget, REST API, or iOS/Android SDK.',
     tags: ['React', 'Node.js', 'LLM', 'RAG', 'FAISS', 'SaaS'],
     liveUrl: 'https://novuschat.com',
+    previewDomain: 'novuschat.com',
     category: 'AI',
     role: 'Founder · Full-Stack Developer',
     highlight: 'Flagship · Live SaaS',
@@ -61,31 +66,48 @@ const projects: Project[] = [
   },
   {
     title: 'SiteWorkThit',
-    tagline: 'Full website redesign for a construction-tech platform',
+    tagline: 'Free SEO, ranking & page-speed toolkit for website owners',
     description:
-      'Freelance engagement: rebuilt the product site end-to-end. Restructured information architecture, introduced a reusable component system, and made every flow noticeably more user-friendly without touching the underlying product.',
-    tags: ['React', 'Next.js', 'Tailwind', 'UX'],
+      'A free, self-serve web toolkit that helps site owners understand exactly how their site is performing — search ranking, Core Web Vitals, page speed, and a basic on-page SEO audit — plus a one-click Google Analytics connection for live traffic insight. Freelance engagement with a full redesign and IA rebuild on top.',
+    tags: ['React', 'Next.js', 'Tailwind', 'SEO', 'GA4'],
     liveUrl: 'https://siteworkthit.com',
+    previewDomain: 'siteworkthit.com',
     category: 'Web',
     role: 'Freelance · Lead Developer',
     highlight: 'Live product',
     icon: Layers,
     accent: '#FF4D2E',
     gradient: 'linear-gradient(135deg, #FF4D2E 0%, #FF8860 100%)',
+    extra: [
+      'Website ranking checker — keyword-level SERP position lookup',
+      'Page-speed & Core Web Vitals (LCP / CLS / INP) audit',
+      'Free basic SEO audit: meta tags, headings, alt text, mobile readiness',
+      'One-click Google Analytics (GA4) connection for live traffic insight',
+      'Shareable report links for clients — no signup required',
+    ],
   },
   {
     title: 'ShareItHub',
-    tagline: 'Share-and-discover web platform',
+    tagline: 'Cross-platform file & data sharing over your local network',
     description:
-      'Built a lightweight hub for sharing assets and links. Added authentication, moderation, and an optimized feed pipeline so pages stay fast as the library grows.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+      'A cross-platform app that lets phones, tablets, and laptops share files and data directly between devices over the same network — no cloud, no cable. Built so a user on iOS, Android, macOS, or Windows can discover nearby devices and transfer instantly, with authentication and an optimized pipeline to keep transfers fast as payloads grow.',
+    tags: ['React', 'Node.js', 'WebRTC', 'Cross-platform', 'LAN'],
     liveUrl: 'https://shareithub.com',
+    previewDomain: 'shareithub.com',
     category: 'Web',
     role: 'Full-Stack Developer',
     highlight: 'Live product',
     icon: Share2,
     accent: '#7B5BFF',
     gradient: 'linear-gradient(135deg, #7B5BFF 0%, #B190FF 100%)',
+    extra: [
+      'Cross-platform: iOS, Android, macOS, Windows & Linux from one web app',
+      'Direct device-to-device transfer over Wi-Fi / local network — no cloud hop',
+      'Auto-discovery of nearby devices on the same network',
+      'Send files, folders, text snippets, and links between devices',
+      'End-to-end encrypted sessions with one-tap pairing',
+      'Optimized streaming pipeline — stays fast as file size grows',
+    ],
   },
   {
     title: 'ImageAndPDF',
@@ -94,6 +116,7 @@ const projects: Project[] = [
       'A full-stack web app for image and PDF processing — conversion, compression, and format manipulation. Deployed on Render with a responsive UI and non-blocking server pipelines for large files.',
     tags: ['React', 'Node.js', 'Express', 'Render'],
     liveUrl: 'https://imageandpdf.com',
+    previewDomain: 'imageandpdf.com',
     category: 'Web',
     role: 'Full-Stack Developer',
     highlight: 'Deployed',
@@ -181,48 +204,88 @@ const categories: { label: Category; count?: number }[] = [
 
 function ProjectCard({ project }: { project: Project }) {
   const Icon = project.icon;
+  const hasPreview = Boolean(project.previewDomain);
   return (
-    <article className="card-dark card-dark-hover p-0 overflow-hidden gpu flex flex-col">
+    <article className="card-dark card-dark-hover p-0 overflow-hidden gpu flex flex-col group">
       {/* Visual header */}
       <div
-        className="relative h-[200px] overflow-hidden"
+        className="relative h-[220px] overflow-hidden"
         style={{ background: project.gradient }}
       >
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.5), transparent 40%)',
-          }}
-        />
-        <div className="absolute inset-0 grid-bg opacity-40" />
-        <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
+        {hasPreview ? (
+          <>
+            {/* Browser-chrome framed live screenshot */}
+            <div className="absolute inset-3 rounded-xl overflow-hidden border border-white/20 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.9)] bg-[#0b0b10]">
+              {/* Mac-style window bar */}
+              <div className="flex items-center justify-between px-3 py-1.5 bg-[#13131C]/95 border-b border-white/10">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                </div>
+                <div className="flex-1 mx-3 h-5 rounded-md bg-black/40 border border-white/10 flex items-center px-2">
+                  <span className="text-[9px] font-mono text-white/60 truncate">
+                    {project.previewDomain}
+                  </span>
+                </div>
+                <div className="w-5" />
+              </div>
+              <div className="relative w-full h-[calc(100%-28px)] bg-[#0F0F16]">
+                <img
+                  src={previewForDomain(project.previewDomain!)}
+                  alt={`${project.title} live preview`}
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.opacity = '0';
+                  }}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 ease-out group-hover:scale-[1.04]"
+                />
+                {/* Soft gradient for readability of overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div
+              className="absolute inset-0 opacity-30"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.5), transparent 40%)',
+              }}
+            />
+            <div className="absolute inset-0 grid-bg opacity-40" />
+          </>
+        )}
+        <div className="absolute top-5 left-5 right-5 flex items-start justify-between z-10">
           <div className="flex items-center gap-2">
             {project.category === 'iOS' && (
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 border border-white/20 backdrop-blur-sm">
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-sm">
                 <Apple className="w-3.5 h-3.5 text-white" />
                 <span className="text-[10px] font-mono text-white tracking-wider uppercase">
                   iOS
                 </span>
               </div>
             )}
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 border border-white/20 backdrop-blur-sm">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-sm">
               <span className="text-[10px] font-mono text-white tracking-wider uppercase">
                 {project.category}
               </span>
             </div>
           </div>
           {project.highlight && (
-            <span className="text-[10px] font-mono text-white/90 tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/40 border border-white/20 backdrop-blur-sm">
+            <span className="text-[10px] font-mono text-white/95 tracking-wider uppercase px-2.5 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-sm">
               {project.highlight}
             </span>
           )}
         </div>
-        <div className="absolute bottom-5 left-5">
-          <div className="w-14 h-14 rounded-2xl bg-black/35 border border-white/25 backdrop-blur-sm flex items-center justify-center">
-            <Icon className="w-6 h-6 text-white" />
+        {!hasPreview && (
+          <div className="absolute bottom-5 left-5 z-10">
+            <div className="w-14 h-14 rounded-2xl bg-black/35 border border-white/25 backdrop-blur-sm flex items-center justify-center">
+              <Icon className="w-6 h-6 text-white" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Body */}

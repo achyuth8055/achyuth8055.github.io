@@ -237,6 +237,11 @@
   .float-y { animation: float-y 7s ease-in-out infinite; }
   .float-y-slow { animation: float-y 11s ease-in-out infinite; }
 
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
   /* Scrolling marquee */
   @keyframes marquee {
     from { transform: translate3d(0, 0, 0); }

@@ -22,6 +22,7 @@ const experiences: Experience[] = [
     location: 'Remote · USA / India',
     type: 'Freelance',
     achievements: [
+      'Founded and shipped NovusChat.com — an embeddable RAG chatbot that trains on each client\'s own documents to behave like their actual customer-support agent; features appointment booking, owner reminders, lead capture, analytics, and widget / REST / iOS & Android SDK distribution.',
       'Led a complete website redesign for SiteWorkThit.com — restructured information architecture and component system for a noticeably more user-friendly, on-brand experience.',
       'Shipped ShareItHub.com and contributed to ImageAndPDF.com, owning full-stack delivery from architecture to production deployment.',
       'Built an AI-powered blog writer that ingests raw drafts and returns publish-ready content with SEO, readability, and keyword-density scoring.',
