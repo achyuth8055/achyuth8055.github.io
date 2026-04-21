@@ -65,13 +65,13 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'SiteWorkThit',
+    title: 'SiteWorthIt',
     tagline: 'Free SEO, ranking & page-speed toolkit for website owners',
     description:
       'A free, self-serve web toolkit that helps site owners understand exactly how their site is performing — search ranking, Core Web Vitals, page speed, and a basic on-page SEO audit — plus a one-click Google Analytics connection for live traffic insight. Freelance engagement with a full redesign and IA rebuild on top.',
     tags: ['React', 'Next.js', 'Tailwind', 'SEO', 'GA4'],
-    liveUrl: 'https://siteworkthit.com',
-    previewDomain: 'siteworkthit.com',
+    liveUrl: 'https://siteworthit.com',
+    previewDomain: 'siteworthit.com',
     category: 'Web',
     role: 'Freelance · Lead Developer',
     highlight: 'Live product',

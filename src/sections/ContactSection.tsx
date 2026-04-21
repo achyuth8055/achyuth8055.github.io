@@ -104,7 +104,7 @@ export default function ContactSection() {
               <span className="eyebrow mb-3 block">Elsewhere</span>
               <div className="flex gap-2 mt-3">
                 <a
-                  href="https://www.linkedin.com/in/achyuth-kummari/"
+                  href="https://www.linkedin.com/in/achyuth07/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-[var(--border-mid)] flex items-center justify-center text-[var(--text)] hover:bg-[var(--accent)] hover:border-[var(--accent)] transition-all"

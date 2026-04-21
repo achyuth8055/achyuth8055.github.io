@@ -105,7 +105,7 @@ export default function AboutSection() {
                 embeddable RAG chatbot that turns any team's docs into a real customer-support
                 agent —{' '}
                 <span className="text-[var(--text)]">ShareItHub</span>,{' '}
-                <span className="text-[var(--text)]">SiteWorkThit</span>, and{' '}
+                <span className="text-[var(--text)]">SiteWorthIt</span>, and{' '}
                 <span className="text-[var(--text)]">ImageAndPDF</span>, and built iOS apps — a
                 premium offline music player with multi-cloud import and a water-reminder app
                 that keeps people hydrated.
